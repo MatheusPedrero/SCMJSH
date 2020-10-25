@@ -24,8 +24,9 @@ public final class ComandosInternos {
     }
     
     public static int apagarDiretorio(String nomeDir) {
-
-        throw new RuntimeException("Método ainda não implementado");
+         Scanner scanner = new Scanner(""); 
+            if (Scanner.delete()) { 
+                System.out.println("Arquivo deletado: " + Scanner.getName());
     }
     
     public static int mudarDiretorioTrabalho(String nomeDir){

@@ -40,8 +40,11 @@ public final class Jsh {
     * @return 
     */
     public static ComandoPrompt lerComando() {
+        Scanner scanner = new Scanner(System.in);
+        String args = scanner.nextLine();
 
-        throw new RuntimeException("Método ainda não implementado.");
+        ComandoPrompt comando = new ComandoPrompt(args);
+        Jsh.executarComando(comando);
     }
 
     /**
@@ -56,7 +59,29 @@ public final class Jsh {
     * programa desconhecido.
     */
     public static void executarComando(ComandoPrompt comando) {
-        throw new RuntimeException("Método ainda não implementado.");
+        switch (comando.getNome()){
+            case "fim":
+                Sysem.exit(0);
+                break;
+            case "relogio":
+                ComandosInternos.exibirRelógio();
+                break;
+            case "list":
+                ComandosInternos.escreverListaArquivos(java.util.Optional.ofNuulable(patch));
+                break;
+            case "criar":
+                ComandosInternos.criarNovoDiretorio();
+                break;
+            case "apaga":
+                ComandosInternos.apagaDiretorio();
+                break;
+            case "altera":
+                ComandosInternos.aleraDiretorio();
+                break;
+            default;
+                Jsh.executarPrograma(comando);
+        }
+        
     }
 
     public static int executarPrograma(ComandoPrompt comando) {
